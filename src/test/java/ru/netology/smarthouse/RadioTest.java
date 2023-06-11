@@ -10,7 +10,6 @@ public class RadioTest {
         Radio station = new Radio();
 
         station.setCurrentStation(4);
-        station.currentStationNumber();
 
         int expected = 4;
         int actual = station.getCurrentStation();
@@ -22,10 +21,9 @@ public class RadioTest {
     public void shouldNoSetBigNumber() { //проверяем, может ли радио выставить НЕдопустимый номер станции больше 9
         Radio station = new Radio();
 
-        station.setCurrentStation(15);
-        station.currentStationNumber();
+        station.setCurrentStation(10);
 
-        int expected = 9;
+        int expected = 0;
         int actual = station.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
@@ -36,7 +34,6 @@ public class RadioTest {
         Radio station = new Radio();
 
         station.setCurrentStation(-1);
-        station.currentStationNumber();
 
         int expected = 0;
         int actual = station.getCurrentStation();
@@ -49,9 +46,19 @@ public class RadioTest {
         Radio station = new Radio();
 
         station.setCurrentStation(0);
-        station.currentStationNumber();
 
         int expected = 0;
+        int actual = station.getCurrentStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void shouldSetMaxStation() {          //проверка выставления максимальной станции
+        Radio station = new Radio();
+
+        station.setCurrentStation(9);
+
+        int expected = 9;
         int actual = station.getCurrentStation();
 
         Assertions.assertEquals(expected, actual);
@@ -118,7 +125,6 @@ public class RadioTest {
         Radio station = new Radio();
 
         station.setVolume(0);
-        station.limitsVolume();
 
         int expected = 0;
         int actual = station.getVolume();
@@ -131,7 +137,6 @@ public class RadioTest {
         Radio station = new Radio();
 
         station.setVolume(10);
-        station.limitsVolume();
 
         int expected = 10;
         int actual = station.getVolume();
@@ -143,7 +148,6 @@ public class RadioTest {
         Radio station = new Radio();
 
         station.setVolume(11);
-        station.limitsVolume();
 
         int expected = 10;
         int actual = station.getVolume();
@@ -155,7 +159,6 @@ public class RadioTest {
         Radio station = new Radio();
 
         station.setVolume(-1);
-        station.limitsVolume();
 
         int expected = 0;
         int actual = station.getVolume();
@@ -213,8 +216,6 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
-
-
 }
 
 
